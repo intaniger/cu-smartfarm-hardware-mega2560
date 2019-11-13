@@ -117,9 +117,10 @@ void GenerateReport()
   {
     data["Relay" + String(i + 1)] = (rCtrl.getRelayState(i) == 1) ? "on" : "off";
   }
-  data["Soil"] = sensorVal.soilMoisture;
-  data["Temp"] = sensorVal.temp;
-  data["Humidity"] = sensorVal.humid;
+  // NAN
+  data["Soil"] = sensorVal.soilMoisture == NAN ? 0 : sensorVal.soilMoisture;
+  data["Temp"] = sensorVal.temp == NAN ? 0 : sensorVal.temp;
+  data["Humidity"] = sensorVal.humid == NAN ? 0 : sensorVal.humid;
   root.printTo(json);
 }
 
